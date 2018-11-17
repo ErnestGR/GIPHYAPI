@@ -9,16 +9,21 @@
 </head>
 
 <body>
-    <div id="buttonsContainer"></div>
+    <div class="main-container">
 
-    <form id="gif-form">
-        <h2>Animal Search</h2>
-        <label for="gif-input">Add an animal!</label>
-        <input type="text" id="gif-input"><br>
-        <input id="addGif" type="submit" value="submit">
-    </form>
+        <div id="buttonsContainer"></div>
 
-    <div id="gifsContainer"></div>
+        <div id="gifsContainer"></div>
+
+        <form id="gif-form">
+            <h2>Animal Search</h2>
+            <label for="gif-input">Add an animal!</label>
+            <input type="text" id="gif-input"><br>
+            <input id="addGif" type="submit" value="submit">
+        </form>
+
+
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
@@ -72,12 +77,9 @@
                             gifDiv.append(gifRating);
 
                             var gifImage = $("<img>");
-                            gifImage.attr("src", results[i].images.fixed_height_small_still.url);
-                            gifImage.attr("data-still", results[i].images.fixed_height_small_still.url);
+                            gifImage.attr("src", results[i].images.fixed_height_small.url);
                             gifImage.attr("data-animate", results[i].images.fixed_height_small.url);
-                            gifImage.attr("data-state", "still");
                             gifDiv.append(gifImage);
-
                             $("#gifsContainer").prepend(gifDiv);
                         }
                     });
@@ -87,16 +89,7 @@
             addNewButton();
 
             $(document).on("click", ".gif", displayGifs);
-            $(document).on("click", ".image", function () {
-                var state = $(this).attr('data-state');
-                if (state == 'still') {
-                    $(this).attr('src', $(this).data('animate'));
-                    $(this).attr('data-state', 'animate');
-                } else {
-                    $(this).attr('src', $(this).data('still'));
-                    $(this).attr('data-state', 'still');
-                }
-            });
+
         });
     </script>
 

@@ -1,0 +1,33 @@
+.main-container{
+    width: 960px;
+    margin: 0 auto;
+}
+#buttonsContainer{
+    display: flex;
+float: left;
+width: 200px;
+flex-direction: column;
+}
+#gif-form{
+    float: right;  
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#gifsContainer{
+    float: left;
+    display: inline-flex;
+    width: 500px;
+    flex-direction: column;
+    align-items: center;
+}
+
+#gifsContainer img {
+    height: 256px;
+    width: 256px;
+}
+
+.gif {
+    margin: 5px 15px;
+}
