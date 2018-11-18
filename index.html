@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
     <title>Giphy</title>
 </head>
 
 <body>
+    <h1>10GAG</h1>
     <div class="main-container">
 
         <div id="buttonsContainer"></div>
@@ -22,76 +25,7 @@
             <input id="addGif" type="submit" value="submit">
         </form>
 
-
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-
-            var animalsArray = ["Capybara", "Wolf", "Lion"];
-
-            function renderButtons() {
-                $("#buttonsContainer").empty();
-                for (var i = 0; i < animalsArray.length; i++) {
-                    var gifButton = $("<button>");
-                    gifButton.addClass("gif");
-                    gifButton.attr("data-name", animalsArray[i]);
-                    gifButton.text(animalsArray[i]);
-                    $("#buttonsContainer").append(gifButton);
-                }
-            }
-            function addNewButton() {
-                $("#addGif").on("click", function () {
-                    var gif = $("#gif-input").val().trim();
-                    if (gif == "") {
-                        return false;
-                    }
-                    animalsArray.push(gif);
-                    renderButtons();
-                    return false;
-                });
-            }
-
-            function displayGifs() {
-                var gif = $(this).attr("data-name");
-                var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gif + "&api_key=11Avn5uGy8dzXQWA8TMOlr1Bec0ViLvV&limit=10";
-
-                $.ajax({
-                    url: queryURL,
-                    method: 'GET'
-                })
-                    .then(function (response) {
-                        $("#gifsContainer").empty();
-                        var results = response.data;
-                        if (results == "") {
-                            alert("There isn't a gif for this selected button");
-                        }
-                        for (var i = 0; i < results.length; i++) {
-
-                            var gifDiv = $("<div>");
-                            gifDiv.addClass("gifDiv");
-
-                            var gifRating = $("<p>").text("Rating: " + results[i].rating);
-                            gifDiv.append(gifRating);
-
-                            var gifImage = $("<img>");
-                            gifImage.attr("src", results[i].images.fixed_height_small.url);
-                            gifImage.attr("data-animate", results[i].images.fixed_height_small.url);
-                            gifDiv.append(gifImage);
-                            $("#gifsContainer").prepend(gifDiv);
-                        }
-                    });
-            }
-
-            renderButtons();
-            addNewButton();
-
-            $(document).on("click", ".gif", displayGifs);
-
-        });
-    </script>
 
 </body>
 

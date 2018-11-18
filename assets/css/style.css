@@ -1,33 +1,52 @@
+body{
+background-image: url(../images/paper_fibers.png);  
+font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;  
+}
 .main-container{
-    width: 960px;
-    margin: 0 auto;
+width: 960px;
+margin: 0 auto;
+margin-top: 60px;
+}
+h1{
+    width: 100%;
+    padding: 20px;
+    background-color: #312c32;
+    color: #daad86;
+    text-align: center;
+    font-size: 10vw;
 }
 #buttonsContainer{
-    display: flex;
+display: flex;
 float: left;
 width: 200px;
+height: 540px;
 flex-direction: column;
 }
 #gif-form{
-    float: right;  
-    width: 250px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+float: right;  
+width: 250px;
+display: flex;
+flex-direction: column;
+align-items: right;
 }
 #gifsContainer{
-    float: left;
-    display: inline-flex;
-    width: 500px;
-    flex-direction: column;
-    align-items: center;
+float: left;
+display: inline-flex;
+width: 500px;
+flex-direction: column;
+align-items: center;
 }
 
 #gifsContainer img {
-    height: 256px;
-    width: 256px;
+height: 256px;
+width: 256px;
 }
 
-.gif {
-    margin: 5px 15px;
+.gif, #addGif {
+margin: 5px 25px;
+padding: 10px;
+border-radius: 8px;
+color: #98dafc;
+background-color: #312c32;
 }
+
